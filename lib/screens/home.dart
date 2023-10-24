@@ -29,7 +29,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('MyAnimeList yOSIA')),
+      appBar: AppBar(title: const Text('MyAnimeList Kelompok 17')),
       body: Center(
         child: FutureBuilder(
           builder: (context, AsyncSnapshot<List<Show>> snapshot) {
