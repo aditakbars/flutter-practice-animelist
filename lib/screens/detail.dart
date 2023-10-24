@@ -37,12 +37,9 @@ class _DetailPageState extends State<DetailPage> {
                   return ListTile(
                     leading: CircleAvatar(
                       //number 1 - end
-                      child: Text(
-                          '${snapshot.data![index].score.toStringAsFixed(1)}'),
+                      child: Text('${index + 1}'),
                     ),
                     title: Text(snapshot.data![index].title),
-                    subtitle: Text(snapshot.data![index].title_japanese),
-                    trailing: Text('Episode ${index + 1}'),
                   );
                 },
                 separatorBuilder: (BuildContext context, int index) =>
@@ -61,21 +58,13 @@ class _DetailPageState extends State<DetailPage> {
 }
 
 class Episode {
-  final String title_japanese;
   final String title;
-  final double score;
 
-  Episode({
-    required this.title,
-    required this.score,
-    required this.title_japanese,
-  });
+  Episode({required this.title});
 
   factory Episode.fromJson(Map<String, dynamic> json) {
     return Episode(
       title: json['title'],
-      title_japanese: json['title_japanese'],
-      score: json['score'],
     );
   }
 }
