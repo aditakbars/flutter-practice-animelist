@@ -40,8 +40,7 @@ class _DetailPageState extends State<DetailPage> {
                 itemBuilder: (BuildContext context, int index) {
                   return ListTile(
                     leading: CircleAvatar(
-                      backgroundColor: Colors
-                          .red, // Warna latar belakang diubah menjadi merah
+                      backgroundColor: Color.fromARGB(255, 55, 64, 78),
                       foregroundColor:
                           Colors.white, // Warna teks diubah menjadi putih
                       child: Text(

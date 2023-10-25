@@ -48,7 +48,7 @@ class _NavBarState extends State<NavBar> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.red,
+      backgroundColor: Color.fromARGB(255, 55, 64, 78),
       bottomNavigationBar: CurvedNavigationBar(
         items: items,
         index: index,
@@ -66,7 +66,7 @@ class _NavBarState extends State<NavBar> {
         animationCurve: Curves.easeInOut, // Efek animasi
       ),
       body: Container(
-        color: Colors.red,
+        color: Color.fromARGB(255, 40, 183, 80),
         width: double.infinity,
         height: double.infinity,
         alignment: Alignment.center,

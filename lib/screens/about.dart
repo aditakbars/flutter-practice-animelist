@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-import 'dart:async';
-import 'dart:convert';
-import 'package:http/http.dart' as http;
 
 class About extends StatefulWidget {
   const About({Key? key}) : super(key: key);
@@ -11,58 +8,10 @@ class About extends StatefulWidget {
 }
 
 class _AboutState extends State<About> {
-  late List<String> imageUrls;
-  int currentIndex = 0;
-  late Timer timer;
-
-  @override
-  void initState() {
-    super.initState();
-    fetchDataFromApi();
-    // Set timer to change images every 10 seconds
-    timer = Timer.periodic(Duration(seconds: 2), (timer) {
-      changeImage();
-    });
-  }
-
-  @override
-  void dispose() {
-    timer.cancel();
-    super.dispose();
-  }
-
-  void fetchDataFromApi() async {
-    final response =
-        await http.get(Uri.parse('https://api.jikan.moe/v4/top/anime'));
-    if (response.statusCode == 200) {
-      final data = json.decode(response.body);
-      if (data['data'] != null && data['data'] is List) {
-        List<String> urls = [];
-        for (var anime in data['data']) {
-          if (anime['images']['jpg'] != null &&
-              anime['images']['jpg']['image_url'] != null) {
-            urls.add(anime['images']['jpg']['image_url']);
-          }
-        }
-        setState(() {
-          imageUrls = urls;
-        });
-      }
-    }
-  }
-
-  void changeImage() {
-    if (imageUrls != null && imageUrls.isNotEmpty) {
-      setState(() {
-        currentIndex = (currentIndex + 1) % imageUrls.length;
-      });
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.red,
+      backgroundColor: Color.fromARGB(255, 55, 64, 78),
       appBar: AppBar(
         backgroundColor: Colors.white,
         title: const Text('Anggota Kelompok 17',
@@ -83,18 +32,15 @@ class _AboutState extends State<About> {
                   child: Container(
                     decoration: BoxDecoration(
                       border: Border.all(
-                        color: Colors.white, // Warna border putih
-                        width: 2.0, // Lebar border
+                        color: Colors.white,
+                        width: 2.0,
                       ),
-                      shape: BoxShape.circle, // Membuat gambar menjadi bulat
+                      shape: BoxShape.circle,
                     ),
                     child: ClipOval(
-                      clipBehavior:
-                          Clip.hardEdge, // Untuk membuat gambar memiliki border
+                      clipBehavior: Clip.hardEdge,
                       child: Image.network(
-                        imageUrls != null && imageUrls.isNotEmpty
-                            ? imageUrls[currentIndex]
-                            : "https://example.com/placeholder_image.jpg",
+                        "https://source.unsplash.com/720x720?rock-band", // URL gambar profil
                         width: 200,
                         height: 200,
                         fit: BoxFit.fill,
@@ -118,19 +64,19 @@ class _AboutState extends State<About> {
                       Card(
                         child: ListTile(
                           title: Text('Fadlil Ferdiansyah'),
-                          subtitle: Text('21120121130039'),
+                          subtitle: Text('21120121130073'),
                         ),
                       ),
                       Card(
                         child: ListTile(
                           title: Text('Muhammad Fadlan Daris'),
-                          subtitle: Text('21120121140104'),
+                          subtitle: Text('21120121140146'),
                         ),
                       ),
                       Card(
                         child: ListTile(
                           title: Text('Muhammad Fathan Mubiina'),
-                          subtitle: Text('21120121140153'),
+                          subtitle: Text('21120121140164'),
                         ),
                       ),
                     ],

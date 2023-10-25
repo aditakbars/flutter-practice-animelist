@@ -27,7 +27,7 @@ class _MoreDetailPageState extends State<MoreDetailPage> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          backgroundColor: Colors.red,
+          backgroundColor: Color.fromARGB(176, 55, 64, 78),
           title: Text(
             widget.title,
             overflow: TextOverflow.ellipsis,

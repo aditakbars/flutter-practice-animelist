@@ -39,7 +39,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.red,
+      backgroundColor: Color.fromARGB(255, 55, 64, 78),
       appBar: AppBar(
         backgroundColor: Colors.white,
         title: const Text('My Anime List',
