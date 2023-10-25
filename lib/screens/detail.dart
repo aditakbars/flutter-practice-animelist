@@ -24,7 +24,11 @@ class _DetailPageState extends State<DetailPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text(widget.title)),
+      appBar: AppBar(
+        title: Text(widget.title),
+        backgroundColor: Colors.white,
+        titleTextStyle: TextStyle(color: Colors.black),
+      ),
       body: Center(
           child: FutureBuilder(
         builder: (context, AsyncSnapshot<List<Episode>> snapshot) {
@@ -36,10 +40,16 @@ class _DetailPageState extends State<DetailPage> {
                 itemBuilder: (BuildContext context, int index) {
                   return ListTile(
                     leading: CircleAvatar(
-                      //number 1 - end
-                      child: Text('${index + 1}'),
+                      backgroundColor: Colors
+                          .red, // Warna latar belakang diubah menjadi merah
+                      foregroundColor:
+                          Colors.white, // Warna teks diubah menjadi putih
+                      child: Text(
+                          '${snapshot.data![index].score.toStringAsFixed(1)}'),
                     ),
                     title: Text(snapshot.data![index].title),
+                    subtitle: Text(snapshot.data![index].title_japanese),
+                    trailing: Text('Episode ${index + 1}'),
                   );
                 },
                 separatorBuilder: (BuildContext context, int index) =>
@@ -58,13 +68,21 @@ class _DetailPageState extends State<DetailPage> {
 }
 
 class Episode {
+  final String title_japanese;
   final String title;
+  final double score;
 
-  Episode({required this.title});
+  Episode({
+    required this.title,
+    required this.score,
+    required this.title_japanese,
+  });
 
   factory Episode.fromJson(Map<String, dynamic> json) {
     return Episode(
       title: json['title'],
+      title_japanese: json['title_japanese'],
+      score: json['score'],
     );
   }
 }
